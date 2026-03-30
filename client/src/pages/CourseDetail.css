@@ -1,0 +1,331 @@
+/* ── Course Detail ── */
+.cd-hero {
+  padding: 100px 0 50px;
+  position: relative;
+}
+
+.cd-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.cd-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.cd-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+}
+
+.cd-back-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.cd-hero-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cd-hero-badges .badge {
+  backdrop-filter: blur(10px);
+}
+
+.cd-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.cd-instructor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.cd-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.875rem;
+}
+
+/* Body */
+.cd-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  padding: 32px 0 60px;
+}
+
+.cd-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cd-progress-section {
+  padding: 24px;
+}
+
+.cd-progress-section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.cd-complete-badge {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--accent-success-light);
+  color: var(--accent-success);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.cd-section {
+  padding: 28px;
+}
+
+.cd-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.cd-description {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* Lessons */
+.cd-lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cd-lesson-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  transition: all 0.3s ease;
+}
+
+.cd-lesson-item:hover {
+  transform: translateY(-2px);
+}
+
+.cd-lesson-item.completed {
+  opacity: 0.75;
+}
+
+.cd-lesson-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+}
+
+.cd-lesson-num {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.cd-lesson-num.done {
+  background: var(--accent-success);
+  color: white;
+}
+
+.cd-lesson-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cd-lesson-info p {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+.cd-lesson-duration {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cd-lesson-done-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-success);
+  flex-shrink: 0;
+}
+
+.cd-lesson-lock {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.cd-lesson-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+/* Enrollment Prompt Banner */
+.cd-enroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: var(--accent-primary-light);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.cd-enroll-prompt-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.cd-enroll-prompt strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.cd-enroll-prompt p {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.cd-enroll-prompt .btn {
+  margin-left: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Sidebar */
+.cd-sidebar {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.cd-sidebar-card {
+  overflow: hidden;
+}
+
+.cd-sidebar-thumb {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.cd-sidebar-body {
+  padding: 24px;
+}
+
+.cd-enroll-btn {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.cd-enrolled-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cd-enrolled-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-success);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cd-sidebar-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.cd-sidebar-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.cd-sidebar-detail span {
+  color: var(--text-tertiary);
+}
+
+.cd-sidebar-detail strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .cd-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cd-title {
+    font-size: 1.6rem;
+  }
+
+  .cd-sidebar {
+    position: static;
+  }
+}
