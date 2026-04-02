@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: chadhuvuko-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://uggu:uggu7786@cluster0.l4broff.mongodb.net/course-tracker?appName=Cluster0
+      - key: JWT_SECRET
+        value: chadhuvuko_production_secret_key_123!
