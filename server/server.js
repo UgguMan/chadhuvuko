@@ -44,11 +44,6 @@ app.use('/api/progress', require('./routes/progress'));
 // Temporary seed endpoint
 app.get('/api/seed', async (req, res) => {
   try {
-    const fs = require('fs');
-    const path = require('path');
-    const seedCode = fs.readFileSync(path.join(__dirname, 'seeds', 'seed.js'), 'utf8');
-    
-    // Quick and dirty seed execution inline for Render
     const User = require('./models/User');
     const Course = require('./models/Course');
     const Enrollment = require('./models/Enrollment');
@@ -60,16 +55,23 @@ app.get('/api/seed', async (req, res) => {
     await Course.deleteMany({});
     await User.deleteMany({});
     
-    const users = JSON.parse(fs.readFileSync(path.join(__dirname, 'seeds', 'users.json'), 'utf-8'));
-    const courses = JSON.parse(fs.readFileSync(path.join(__dirname, 'seeds', 'courses.json'), 'utf-8'));
+    const admin = await User.create({ name: 'Admin', email: 'admin@example.com', password: 'password123', role: 'admin' });
+    const student = await User.create({ name: 'Student', email: 'student@example.com', password: 'password123', role: 'student' });
     
-    const hashedUsers = users.map(user => {
-      const salt = bcrypt.genSaltSync(10);
-      return {...user, password: bcrypt.hashSync(user.password, salt)};
-    });
-    
-    await User.create(hashedUsers);
-    await Course.create(courses);
+    await Course.create([
+      { title: 'Complete React Masterclass', description: 'Master React from fundamentals to advanced patterns.', instructor: 'Sarah Chen', category: 'Web Development', difficulty: 'Intermediate',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 30, order: 1 }] },
+      { title: 'Node.js & Express API', description: 'Build production-ready RESTful APIs.', instructor: 'Marcus J', category: 'Web Development', difficulty: 'Intermediate',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 40, order: 1 }] },
+      { title: 'Python for Data Science', description: 'Learn Python programming for data analysis.', instructor: 'Dr. Emily W', category: 'Data Science', difficulty: 'Beginner',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 25, order: 1 }] },
+      { title: 'Flutter Mobile Dev', description: 'Build beautiful cross-platform mobile apps.', instructor: 'Alex R', category: 'Mobile Development', difficulty: 'Beginner',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 40, order: 1 }] },
+      { title: 'Machine Learning', description: 'Deep dive into machine learning.', instructor: 'Dr. Priya P', category: 'Machine Learning', difficulty: 'Advanced',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 35, order: 1 }] },
+      { title: 'DevOps & CI/CD', description: 'Master containerization and orchestration.', instructor: 'James Kim', category: 'DevOps', difficulty: 'Intermediate',
+        lessons: [{ title: 'Intro', content: 'Basics', duration: 25, order: 1 }] }
+    ]);
     
     res.json({ success: true, message: 'Database beautifully seeded! You can go login now! 🎉' });
   } catch (error) {
