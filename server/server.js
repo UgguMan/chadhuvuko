@@ -8,6 +8,11 @@ const errorHandler = require('./middleware/errorHandler');
 // Load env vars
 dotenv.config();
 
+// Fallback JWT secret in case Render environment variables were missed
+if (!process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = 'chadhuvuko_production_fallback_secret_key_2026!';
+}
+
 // Connect to database
 connectDB();
 
