@@ -21,10 +21,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Enable CORS
-const allowedOrigins = ['http://localhost:5173', 'https://chadhuvuko.vercel.app', 'https://chadhuvuko.in'];
+// Enable CORS
 app.use(cors({
   origin: function(origin, callback){
-    if(!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if(!origin) return callback(null, true);
+    // Allow any localhost, any vercel preview, or chadhuvuko.in
+    if (origin.includes('localhost') || origin.includes('vercel.app') || origin.includes('chadhuvuko.in')) {
+      return callback(null, true);
+    }
     return callback(new Error('CORS blocked'), false);
   },
   credentials: true
